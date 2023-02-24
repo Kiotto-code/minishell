@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/24 13:49:45 by yichan           ###   ########.fr       */
+/*   Updated: 2023/02/25 00:06:18 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <stdio.h>
 
 typedef struct s_stk
 {
@@ -29,7 +30,7 @@ typedef struct s_stk
 
 typedef struct s_list
 {
-	struct s_stk	*content;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
 
@@ -57,7 +58,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
-void	*ft_calloc(size_t count, size_t size);
+void	*ft_calloc(size_t count);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -86,5 +87,7 @@ char	*ft_strend(char *str, int n);
 char	*ft_strjoinf(char *s1, char const *s2);
 int		ft_arrind(char **arr);
 char	**ft_duparr(char **env);
+int		ft_arr2lst(t_list **lst, char **arr, \
+			void (*add_back)(t_list **lst, t_list *new));
 
 #endif

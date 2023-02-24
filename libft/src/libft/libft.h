@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/24 01:52:17 by yichan           ###   ########.fr       */
+/*   Updated: 2023/02/25 00:06:26 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_stk
 {
@@ -25,7 +26,7 @@ typedef struct s_stk
 
 typedef struct s_list
 {
-	struct s_stk	*content;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
 
@@ -52,7 +53,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
-void	*ft_calloc(size_t count, size_t size);
+void	*ft_calloc(size_t count);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
