@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/25 00:06:26 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/02 15:17:49 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_stk
 typedef struct s_list
 {
 	void			*content;
+	void			*name;
+	void			*variable;
 	struct s_list	*next;
 }	t_list;
 
