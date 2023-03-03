@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/24 13:59:03 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/03 18:56:13 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_env
 
 typedef struct s_token
 {
-	char **parse;
+	char **token;
 	char *cmd;
 	char **flag;
 	struct s_token *next;

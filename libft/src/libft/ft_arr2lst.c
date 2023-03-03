@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:37:49 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/25 00:50:41 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/03 18:17:18 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	ft_arr2lst(t_list **lst, char **arr, \
 	{
 		add_back(lst, ft_lstnew(arr[i]));
 	}
-	printf ("%s \n", (char *)(*lst)->content);
+	// printf ("%s \n", (char *)(*lst)->content);
 	return (0);
 }
