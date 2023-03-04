@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/03 18:56:13 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:39:28 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
 
-typedef struct s_env
-{
-	char *name;
-	char *content;
-	struct s_env *next;
-	struct s_env *prev;
-}	t_env;
+// typedef struct s_env
+// {
+// 	char *name;
+// 	char *content;
+// 	struct s_env *next;
+// 	struct s_env *prev;
+// }	t_env;
 
 typedef struct s_token
 {
@@ -38,6 +38,7 @@ typedef struct s_book
 {
 	char	**env_arr;
 	t_list	*env;
+	t_list	*token;
 }	t_book;
 
 //----utils

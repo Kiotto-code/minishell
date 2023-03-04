@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:56:26 by yichan            #+#    #+#             */
-/*   Updated: 2023/02/25 00:05:02 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:35:50 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_list	*ft_lstnew(void *content)
 
 	node = ft_calloc(sizeof(t_list));
 	if (!node)
-		return (NULL);
+		return (0);
 	node->content = content;
-	node->next = NULL;
+	node->next = 0;
 	return (node);
 }

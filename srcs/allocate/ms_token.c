@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/03 19:20:48 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:33:54 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	token_init(t_token	token, char **av)
-{
+// void	token_init(t_token	token, char **av)
+// {
 	
-}
+// }

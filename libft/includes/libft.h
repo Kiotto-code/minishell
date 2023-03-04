@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/03 18:14:34 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:38:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ typedef struct s_list
 	void			*content;
 	void			*var;
 	void			*expand;
+	char			**token;
+	char			*cmd;
+	char			**flag;
 	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
 t_stk	*ft_lstnew2(int content);
