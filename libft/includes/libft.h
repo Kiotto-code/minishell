@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/04 21:38:20 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 23:46:10 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ typedef struct s_stk
 	int				index;
 }			t_stk;
 
+/**
+ * @brief 
+ * content -> envp
+ * 
+ */
 typedef struct s_list
 {
 	void			*content;
-	void			*var;
-	void			*expand;
-	char			**token;
-	char			*cmd;
-	char			**flag;
+	// void			*var;
+	// void			*expand;
+	// char			**token;
+	// char			*cmd;
+	// char			**flag;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;

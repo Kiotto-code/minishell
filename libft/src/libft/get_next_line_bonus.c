@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 15:23:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/01/29 14:27:14 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/04 22:38:25 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*readline(int fd, char *str)
+char	*gnl_readline(int fd, char *str)
 {
 	char	*buff;
 	int		r_ret;
@@ -90,7 +90,7 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 || fd > 1024 || fd < 0)
 		return (NULL);
-	str[fd] = readline(fd, str[fd]);
+	str[fd] = gnl_readline(fd, str[fd]);
 	if (!str[fd])
 		return (NULL);
 	ret = currentline (str[fd]);

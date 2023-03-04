@@ -6,36 +6,46 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/04 21:38:36 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/05 00:27:17 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <fcntl.h>
+# include <stdint.h>
 # include <stdio.h>
 
 typedef struct s_stk
 {
-	int		nbr;
-	int		index;
+	int				nbr;
+	int				index;
 }			t_stk;
 
+/**
+ * @brief 
+ * content -> envp
+ * 
+ */
 typedef struct s_list
 {
 	void			*content;
-	void			*var;
-	void			*expand;
-	char			**token;
-	char			*cmd;
-	char			**flag;
+	// void			*var;
+	// void			*expand;
+	// char			**token;
+	// char			*cmd;
+	// char			**flag;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
 
+t_stk	*ft_lstnew2(int content);
 int		ft_isalpha(int n);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -80,16 +90,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_stk	*ft_lstnew2(int content);
-t_list	**get_av(int ac, char **av);
 int		ft_max(int a, int b);
 void	ft_error(char *str, int stat);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*get_next_line(int fd);
-char	*strend(char *str, int n);
+char	*ft_strend(char *str, int n);
 char	*ft_strjoinf(char *s1, char const *s2);
 int		ft_arrind(char **arr);
 char	**ft_duparr(char **env);
-
+int		ft_arr2lst(t_list **lst, char **arr, \
+			void (*add_back)(t_list **lst, t_list *new));
 
 #endif

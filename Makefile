@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 18:29:34 by yichan            #+#    #+#              #
-#    Updated: 2023/02/24 19:37:14 by yichan           ###   ########.fr        #
+#    Updated: 2023/03/04 22:39:23 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all				:	$(NAME)
 
 $(NAME)			:	$(OBJS)
 					make -C libft
-					$(CC) $(CFLAGS) $^ -L$(LIBFT_PATH) -lft -o $@
+					$(CC) $(CFLAGS) $^ -lreadline -lncurses -L$(LIBFT_PATH) -lft -o $@
 
 
 $(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h ./Makefile | $(OBJ_PATH) 

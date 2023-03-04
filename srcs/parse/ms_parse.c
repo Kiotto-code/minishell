@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ms_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 14:56:26 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/05 00:26:56 by yichan           ###   ########.fr       */
+/*   Created: 2023/03/04 23:11:18 by yichan            #+#    #+#             */
+/*   Updated: 2023/03/05 00:02:45 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "minishell.h"
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*node;
-
-	node = ft_calloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
-}
+// int	ms_parse(t_book *record)
+// {
+	
+// }

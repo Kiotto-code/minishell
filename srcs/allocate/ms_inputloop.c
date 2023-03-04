@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ms_inputloop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 14:56:26 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/05 00:26:56 by yichan           ###   ########.fr       */
+/*   Created: 2023/03/04 23:03:16 by yichan            #+#    #+#             */
+/*   Updated: 2023/03/05 00:03:01 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-t_list	*ft_lstnew(void *content)
+int	ms_inputloop(t_book *record)
 {
-	t_list	*node;
-
-	node = ft_calloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	while (1)
+	{
+		record->input = readline("./minishell> ");
+		if (record->input == NULL)
+			break ;
+		// ms_parse(record);
+		free(record->input);
+	}
+	return (0);
 }

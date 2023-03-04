@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:16:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/04 21:54:55 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/05 00:03:28 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,20 @@ int	main(int ac, char **av, char **env)
 		return (EXIT_FAILURE);
 	}
 	record_init(&record, env);
-	ms_insinput(int)
+	// ms_inputloop(&record);
+	// record.input = readline("./minishell> ");
 }
+
+// int	main(void)
+// {
+// 	char	*str;
+
+// 	while (1)
+// 	{
+// 		str = readline("read> ");
+// 		if (str == NULL)
+// 			break ;
+// 		printf("str: [%s]\n", str);
+// 		free(str);
+// 	}
+// }
