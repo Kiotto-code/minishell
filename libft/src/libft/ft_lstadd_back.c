@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:46:04 by yichan            #+#    #+#             */
-/*   Updated: 2023/01/11 18:41:01 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/05 23:24:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	if (*lst)
+	{
+		new->prev = ft_lstlast(*lst);
 		ft_lstlast(*lst)->next = new;
+	}
 	else
 		*lst = new;
 }

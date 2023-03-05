@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/05 00:30:34 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/05 23:11:42 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,32 @@
 # include <readline/readline.h>
 # include "../libft/includes/libft.h"
 
+# define DEFAULT	"\033[0m"
+# define CYAN		"\033[0;36m"
+# define RED		"\033[0;31m"
+# define SQUOTE		1
+# define DQUOTE		2
+# define NEUTRAL	0
+
 typedef struct s_env
 {
-	char *var;
-	char *key;
-	char *value;
-	struct s_env *next;
-	struct s_env *prev;
+	char			*var;
+	char			*key;
+	char			*value;
+	struct s_env	*prev;
+	struct s_env	*next;
 }	t_env;
 
 typedef struct s_token
 {
-	char **token;
-	char *cmd;
-	char **flag;
-	struct s_token *next;
-	struct s_token *prev;
+	int				anchor;
+	int				dollar;
+	t_list			*entity;
+	// t_list direct;
+	// t_list dquote;
+	// t_list squote;
+	struct s_token	*next;
+	struct s_token	*prev;
 }	t_token;
 
 typedef struct s_book
@@ -50,8 +60,8 @@ typedef struct s_book
 
 //----allocate
 //ms_initiate.c
+void	ms_token(t_token *token, t_book *record);
 int		ms_inputloop(t_book *record);
 void	record_init(t_book *record, char **envp);
-
 
 #endif
