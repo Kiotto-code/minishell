@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 18:29:34 by yichan            #+#    #+#              #
-#    Updated: 2023/03/05 20:13:31 by yichan           ###   ########.fr        #
+#    Updated: 2023/03/07 01:49:01 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	minishell
 CC      =   gcc
 RM      =   rm -rf
 CFLAGS  =   -Wall -Werror -Wextra -g
-CFLAGS  +=  -fsanitize=address
+CSAN  =  -fsanitize=address -g
 INCLUDES    = ./includes
 SRC_PATH    = ./srcs/**
 OBJ_PATH    = ./obj
@@ -33,11 +33,18 @@ all				:	$(NAME)
 
 $(NAME)			:	$(OBJS)
 					make -C libft
-					$(CC) $(CFLAGS) $^ -lreadline -lncurses -L$(LIBFT_PATH) -lft -o $@
+					$(CC) $(CFLAGS) $(CSAN) $^ -lreadline -lncurses -lft -L$(LIBFT_PATH) -o $@
+
+# $(NAME)			:	$(OBJS)
+# 					make -C libft
+# 					$(CC) $(CFLAGS) $^ -lreadline -lncurses -L$(LIBFT_PATH) -lft -o $@
 
 
 $(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h ./Makefile | $(OBJ_PATH) 
 					$(CC) $(CFLAGS) -c -I$(INCLUDES) $< -o $@
+
+# $(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h ./Makefile | $(OBJ_PATH) 
+# 					$(CC) $(CFLAGS) -c -I$(INCLUDES) $< -o $@
 
 
 $(OBJ_PATH)		:
