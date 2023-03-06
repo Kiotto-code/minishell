@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 23:03:16 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/05 22:04:38 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/06 23:47:35 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	ms_inputloop(t_book *record)
 {
 	t_token	token;
 
-	record->token->content = &token;
+	token.anchor = 0;
+	// token.entity = 0;
+	record->token = ft_lstnew(&token);
+	// record->token->content = &token;
 	while (1)
 	{
 		record->input = readline("./minishell> ");

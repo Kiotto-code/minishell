@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/05 23:11:42 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/06 19:04:49 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define RED		"\033[0;31m"
 # define SQUOTE		1
 # define DQUOTE		2
+# define DOLLAR		3
 # define NEUTRAL	0
 
 typedef struct s_env
@@ -38,7 +39,7 @@ typedef struct s_env
 typedef struct s_token
 {
 	int				anchor;
-	int				dollar;
+	// int				dollar;
 	t_list			*entity;
 	// t_list direct;
 	// t_list dquote;
