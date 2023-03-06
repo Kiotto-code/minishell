@@ -7,7 +7,7 @@ int	main(void)
 		str = readline("read> ");
 		if (str == NULL)
 			break ;
-		printf("str: [%s]\n", str);
+		// printf("str: [%s]\n", str);
 		free(str);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:16:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/07 01:55:41 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/07 02:00:24 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(int ac, char **env)
 	record_init(&record, env);
 	ms_inputloop(&record);
 	// record.input = readline("./minishell> ");
-	// system("leaks -q minishell");
-	// return (0);
+	system("leaks -q minishell");
+	return (0);
 }
 
 // int	main(void)

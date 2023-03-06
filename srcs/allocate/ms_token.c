@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/07 01:58:17 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/07 02:42:57 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ t_list	*ms_tokenrec(char *av, int *start, int *end)
 	char	*ret;
 	t_list	*new;
 
-	ret = ft_substr(av, *start, *end);
-	// printf("start: %d, end: %d", *start, *end);
-	// printf("str in tokenstr: %s\n", ret);
-	// printf("av in tokenstr: %s\n", av);
+	ret = ft_substr(av, *start, *end-*start);
 	// *start = *end;
 	new = ft_lstnew(ft_strdup(ret));
 	free(ret);
@@ -34,18 +31,20 @@ int	ms_split(t_book *record, t_token *token)
 	char			*av;
 
 	start = 0;
+	av = ft_strjoin(record->input, " end");
+	while (av[start] == ' ')
+				start++;
 	end = start;
-	av = record->input;
 	// printf("record->input: %s\n",record->input);
 	// token->anchor = NEUTRAL;
 	while (av[end])
 	{
-		if ((av[end] == ' ') && token->anchor == NEUTRAL)
+		if ((av[end] == ' ') && av[end-1] != ' ' && token->anchor == NEUTRAL)
 		{
 			while (av[start] == ' ')
 				start++;
 			ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
-			printf("str: %s \n", (char *)(token->entity->content));
+			// printf("str: %s \n", (char *)(token->entity->content));
 			start = end;
 		}
 		if (av[end] == '\'' && token->anchor == NEUTRAL)
@@ -56,11 +55,17 @@ int	ms_split(t_book *record, t_token *token)
 			token->anchor = DQUOTE;
 		else if (av[end] == '\"' && token->anchor == DQUOTE)
 			token->anchor = NEUTRAL;
+		// while (av[start] == ' ')
+		// 	start++;
 		end++;
 	}
-	if ((av[end] == 0) && token->anchor == NEUTRAL)
-		ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
-	printf ("why%s\n", (token->entity->content));
+	// if ((av[end] == 0) && token->anchor != NEUTRAL)
+	// 	ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
+	while (token->entity)
+	{
+		printf ("str: %s\n", (token->entity->content));
+		token->entity = token->entity->next;
+	}
 	return (0);
 }
 
