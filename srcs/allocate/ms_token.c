@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/07 02:42:57 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/07 02:51:16 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	ms_split(t_book *record, t_token *token)
 	char			*av;
 
 	start = 0;
-	av = ft_strjoin(record->input, " end");
+	av = ft_strjoin(record->input, " ");
+	// av = record->input;
 	while (av[start] == ' ')
 				start++;
 	end = start;
@@ -39,7 +40,7 @@ int	ms_split(t_book *record, t_token *token)
 	// token->anchor = NEUTRAL;
 	while (av[end])
 	{
-		if ((av[end] == ' ') && av[end-1] != ' ' && token->anchor == NEUTRAL)
+		if ((av[end] == ' ' && av[end-1] != ' ' && token->anchor == NEUTRAL) || av[end+1] == 0)
 		{
 			while (av[start] == ' ')
 				start++;
