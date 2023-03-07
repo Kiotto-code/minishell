@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/07 02:51:16 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/08 02:22:47 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,16 @@ int	ms_split(t_book *record, t_token *token)
 	}
 	// if ((av[end] == 0) && token->anchor != NEUTRAL)
 	// 	ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
+	if (token->entity && *(char *)(ft_lstlast(token->entity)->content) == 0)
+	{
+		// free(ft_lstlast(token->entity)->content);
+		// ft_lstdelone((ft_lstlast(token->entity)), free);
+		ft_lstdelone(((token->entity)), free);
+		// ft_lstlast(token->entity)->next = 0;
+	}
 	while (token->entity)
 	{
-		printf ("str: %s\n", (token->entity->content));
+		printf ("str: %s|\n", (token->entity->content));
 		token->entity = token->entity->next;
 	}
 	return (0);

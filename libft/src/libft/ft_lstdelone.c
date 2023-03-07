@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 18:23:26 by yichan            #+#    #+#             */
-/*   Updated: 2023/01/11 18:41:23 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/08 02:20:36 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	if (!lst || !del)
 		return ;
 	del(lst->content);
+	if (lst->prev)
+		lst->prev->next=0;
 	free(lst);
 }
