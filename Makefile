@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 18:29:34 by yichan            #+#    #+#              #
-#    Updated: 2023/03/07 01:49:01 by yichan           ###   ########.fr        #
+#    Updated: 2023/03/08 20:43:09 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME)			:	$(OBJS)
 # 					$(CC) $(CFLAGS) $^ -lreadline -lncurses -L$(LIBFT_PATH) -lft -o $@
 
 
-$(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h ./Makefile | $(OBJ_PATH) 
+$(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h | $(OBJ_PATH) 
 					$(CC) $(CFLAGS) -c -I$(INCLUDES) $< -o $@
 
 # $(OBJ_PATH)/%.o	:	$(SRC_PATH)/%.c* ./includes/*.h ./Makefile | $(OBJ_PATH) 
