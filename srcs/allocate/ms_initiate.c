@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 00:40:48 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/06 23:42:37 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:52:33 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	name_expand(t_list **lst, char **arr)
 		env->value = ft_strchr(env->var, '=');
 		env->key = ft_substr(env->var, 0, env->value - env->var);
 		(lst_itr) = (lst_itr)->next;
+		printf("%s", env->key);
+		printf("%s\n", env->value);
 	}
 	printf ("%s \n", ((t_env *)(*lst)->content)->var);
 	return (0);
@@ -70,7 +72,6 @@ void	record_init(t_book *record, char **envp)
 	record->token = 0;
 	ft_arr2envl(&(record->env), envp);
 	name_expand(&(record->env), envp);
-	
 	// record->mininput = open(path, _CREAT | 
 	// printf("%d\n", ft_lstsize(record->env));
 	// printf("%d\n", ft_arrind(envp));

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 23:03:16 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/06 23:47:35 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/08 21:09:55 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ms_inputloop(t_book *record)
 	{
 		record->input = readline("./minishell> ");
 		if (record->input == NULL)
-			break ;
+			exit(exit_status) ;
 		ms_token(&token, record);
 		free(record->input);
 	}

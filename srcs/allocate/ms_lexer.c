@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strend.c                                        :+:      :+:    :+:   */
+/*   ms_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 23:27:42 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/09 01:46:10 by yichan           ###   ########.fr       */
+/*   Created: 2023/03/09 01:57:02 by yichan            #+#    #+#             */
+/*   Updated: 2023/03/09 03:07:57 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_strend(char *str, int n)
+int	ms_lexer(t_book *record, t_token *token)
 {
-	return (str + (strlen(str) - n));
-}
-
-int main()
-{
-	char *s = "hello";
-	char *ret = ft_strend(s, strlen(s) -1);
-	printf("%s", ret);
+	(void)record;
+	printf("str: %s\n", token->entity->content);
+	return(0);
 }

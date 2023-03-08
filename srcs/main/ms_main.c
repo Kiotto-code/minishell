@@ -6,15 +6,19 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:16:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/07 02:00:24 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/08 21:27:26 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int ac, char **env)
+int	main(int ac, char **av, char **env)
 {
 	t_book	record;
+
+	(void) ac;
+	(void) av;
+	exit_status = 0;
 	// t_token	token;
 
 	// (void)av;

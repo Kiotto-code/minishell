@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/08 02:22:47 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/09 03:12:23 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,30 @@ t_list	*ms_tokenrec(char *av, int *start, int *end)
 	return (new);
 }
 
+void	ms_quotesplit(char *av, int *start, int *end, t_token *token)
+{
+	while (av[*end])
+	{
+		if ((av[*end] == ' ' && av[*end -1] != ' ' && \
+			token->anchor == NEUTRAL) || av[*end +1] == 0)
+		{
+			while (av[*start] == ' ')
+				(*start)++;
+			ft_lstadd_back(&token->entity, ms_tokenrec(av, &*start, &*end));
+			*start = *end;
+		}
+		if (av[*end] == '\'' && token->anchor == NEUTRAL)
+			token->anchor = SQUOTE;
+		else if (av[*end] == '\'' && token->anchor == SQUOTE)
+			token->anchor = NEUTRAL;
+		else if (av[*end] == '\"' && token->anchor == NEUTRAL)
+			token->anchor = DQUOTE;
+		else if (av[*end] == '\"' && token->anchor == DQUOTE)
+			token->anchor = NEUTRAL;
+		(*end)++;
+	}
+}
+
 int	ms_split(t_book *record, t_token *token)
 {
 	int				start;
@@ -32,47 +56,17 @@ int	ms_split(t_book *record, t_token *token)
 
 	start = 0;
 	av = ft_strjoin(record->input, " ");
-	// av = record->input;
 	while (av[start] == ' ')
 				start++;
 	end = start;
-	// printf("record->input: %s\n",record->input);
-	// token->anchor = NEUTRAL;
-	while (av[end])
-	{
-		if ((av[end] == ' ' && av[end-1] != ' ' && token->anchor == NEUTRAL) || av[end+1] == 0)
-		{
-			while (av[start] == ' ')
-				start++;
-			ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
-			// printf("str: %s \n", (char *)(token->entity->content));
-			start = end;
-		}
-		if (av[end] == '\'' && token->anchor == NEUTRAL)
-			token->anchor = SQUOTE;
-		else if (av[end] == '\'' && token->anchor == SQUOTE)
-			token->anchor = NEUTRAL;
-		else if (av[end] == '\"' && token->anchor == NEUTRAL)
-			token->anchor = DQUOTE;
-		else if (av[end] == '\"' && token->anchor == DQUOTE)
-			token->anchor = NEUTRAL;
-		// while (av[start] == ' ')
-		// 	start++;
-		end++;
-	}
-	// if ((av[end] == 0) && token->anchor != NEUTRAL)
-	// 	ft_lstadd_back(&token->entity, ms_tokenrec(av, &start, &end));
+	ms_quotesplit(av, &start, &end, token);
 	if (token->entity && *(char *)(ft_lstlast(token->entity)->content) == 0)
+		ft_lstdelone((ft_lstlast(token->entity)), free);
+	t_list *ptr = token->entity;
+	while (ptr)
 	{
-		// free(ft_lstlast(token->entity)->content);
-		// ft_lstdelone((ft_lstlast(token->entity)), free);
-		ft_lstdelone(((token->entity)), free);
-		// ft_lstlast(token->entity)->next = 0;
-	}
-	while (token->entity)
-	{
-		printf ("str: %s|\n", (token->entity->content));
-		token->entity = token->entity->next;
+		printf("str: %s \n", ptr->content);
+		ptr = ptr->next;
 	}
 	return (0);
 }
@@ -81,6 +75,7 @@ void	ms_token(t_token *token, t_book *record)
 {
 	token->anchor = NEUTRAL;
 	ms_split(record, token);
+	ms_lexer(record, token);
 	// token->av = av;
 	
 }

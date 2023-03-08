@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/06 19:04:49 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/09 03:05:35 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define DQUOTE		2
 # define DOLLAR		3
 # define NEUTRAL	0
+
+int exit_status;
 
 typedef struct s_env
 {
@@ -64,5 +66,8 @@ typedef struct s_book
 void	ms_token(t_token *token, t_book *record);
 int		ms_inputloop(t_book *record);
 void	record_init(t_book *record, char **envp);
+// ms_lexer.c
+int		ms_lexer(t_book *record, t_token *token);
+
 
 #endif
