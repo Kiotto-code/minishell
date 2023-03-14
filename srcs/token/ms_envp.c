@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_initiate.c                                      :+:      :+:    :+:   */
+/*   ms_envp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 00:40:48 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/09 02:52:33 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/11 02:54:23 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_env	*newenvl(char *content)
 	if (!node)
 		return (0);
 	node->var = content;
-	node->next = 0;
+	// node->next = 0;
 	return (node);
 }
 
@@ -56,10 +56,10 @@ int	name_expand(t_list **lst, char **arr)
 		env->value = ft_strchr(env->var, '=');
 		env->key = ft_substr(env->var, 0, env->value - env->var);
 		(lst_itr) = (lst_itr)->next;
-		printf("%s", env->key);
-		printf("%s\n", env->value);
+		// printf("%s", env->key);
+		// printf("%s\n", env->value);
 	}
-	printf ("%s \n", ((t_env *)(*lst)->content)->var);
+	// printf ("%s \n", ((t_env *)(*lst)->content)->var);
 	return (0);
 }
 
@@ -70,6 +70,7 @@ void	record_init(t_book *record, char **envp)
 	// record->env_arr = ft_duparr(envp);
 	record->env = 0;
 	record->token = 0;
+	record->anchor = NEUTRAL;
 	ft_arr2envl(&(record->env), envp);
 	name_expand(&(record->env), envp);
 	// record->mininput = open(path, _CREAT | 

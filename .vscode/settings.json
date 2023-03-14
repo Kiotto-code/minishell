@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"minishell.h": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"cstdlib": "c",
+		"locale": "c"
 	}
 }

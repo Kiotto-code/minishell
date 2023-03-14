@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/09 03:05:35 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/11 02:58:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,29 @@ typedef struct s_env
 	char			*var;
 	char			*key;
 	char			*value;
-	struct s_env	*prev;
-	struct s_env	*next;
+	// struct s_env	*prev;
+	// struct s_env	*next;
 }	t_env;
 
 typedef struct s_token
 {
-	int				anchor;
+	// int				anchor;
 	// int				dollar;
-	t_list			*entity;
+	char			*entity;
+	// t_list			*type;
+	int				type;
 	// t_list direct;
 	// t_list dquote;
 	// t_list squote;
-	struct s_token	*next;
-	struct s_token	*prev;
+	// struct s_token	*next;
+	// struct s_token	*prev;
 }	t_token;
 
 typedef struct s_book
 {
 	char	**env_arr;
 	char	*input;
+	int		anchor;
 	t_list	*env;
 	t_list	*token;
 }	t_book;
@@ -63,7 +66,7 @@ typedef struct s_book
 
 //----allocate
 //ms_initiate.c
-void	ms_token(t_token *token, t_book *record);
+void	ms_token(t_book *record);
 int		ms_inputloop(t_book *record);
 void	record_init(t_book *record, char **envp);
 // ms_lexer.c
