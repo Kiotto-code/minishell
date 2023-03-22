@@ -6,11 +6,21 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 00:40:48 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/11 02:54:23 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/22 21:04:10 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*get_env_val(char *env)
+{
+	char	*str;
+	char	*ret;
+
+	str = ft_strchr(env, '=');
+	ret = ft_substr(str, 1, ft_strlen(str));
+	return (ret);
+}
 
 t_env	*newenvl(char *content)
 {
@@ -53,11 +63,12 @@ int	name_expand(t_list **lst, char **arr)
 	while ((lst_itr))
 	{
 		env = lst_itr->content;
-		env->value = ft_strchr(env->var, '=');
+		// env->value = ft_strchr(env->var, '=');
+		env->value = get_env_val(env->var);
 		env->key = ft_substr(env->var, 0, env->value - env->var);
 		(lst_itr) = (lst_itr)->next;
 		// printf("%s", env->key);
-		// printf("%s\n", env->value);
+		printf("%s\n", env->value);
 	}
 	// printf ("%s \n", ((t_env *)(*lst)->content)->var);
 	return (0);

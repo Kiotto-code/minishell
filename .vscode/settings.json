@@ -3,6 +3,8 @@
 		"minishell.h": "c",
 		"sstream": "c",
 		"cstdlib": "c",
-		"locale": "c"
+		"locale": "c",
+		"stdlib.h": "c",
+		"unistd.h": "c"
 	}
 }
