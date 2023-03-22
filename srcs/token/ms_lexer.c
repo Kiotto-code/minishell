@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 01:57:02 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/09 22:23:00 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/22 23:20:05 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ms_lexer(t_book *record, t_token *token)
 {
 	(void)record;
 	printf("str: %s\n", token->entity);
-	
-	return(0);
+
+	return (0);
 }
 

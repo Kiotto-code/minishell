@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/11 02:58:20 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/22 23:19:08 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,13 @@ typedef struct s_env
 	char			*var;
 	char			*key;
 	char			*value;
-	// struct s_env	*prev;
-	// struct s_env	*next;
+
 }	t_env;
 
 typedef struct s_token
 {
-	// int				anchor;
-	// int				dollar;
-	char			*entity;
-	// t_list			*type;
-	int				type;
-	// t_list direct;
-	// t_list dquote;
-	// t_list squote;
-	// struct s_token	*next;
-	// struct s_token	*prev;
+	char	*entity;
+	int		type;
 }	t_token;
 
 typedef struct s_book
