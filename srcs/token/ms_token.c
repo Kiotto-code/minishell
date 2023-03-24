@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/22 23:18:19 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/24 20:11:17 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_token	*ms_tokenrec(char *av, int *start, int *end)
 	new = ft_calloc(sizeof(t_token));
 	if (!new)
 		return (0);
+	while(av)
+	ft_lstadd_back(&record->token,
+				ft_lstnew(ms_tokenrec(av, &start, &end)));
 	new->entity = ft_substr(av, *start, (*end) - (*start));
 	new->type = 0;
 	return (new);
@@ -73,6 +76,7 @@ void	ms_quotesplit(t_book *record)
 			start = end;
 		}
 		check_anchor(av[end], record);
+		end++;
 	}
 }
 
@@ -84,9 +88,10 @@ void	ms_quotesplit(t_book *record)
  */
 void	ms_token(t_book *record)
 {
-	t_list	*itr;
+	t_token	*itr;
 
 	ms_quotesplit(record);
-	itr = (t_list *)(record->token);
-	printf("str: %s \n", ((t_token *)(itr->content))->entity);
+	// printf("sdad");
+	itr = (t_token *)(record->token->content);
+	printf("str: %s \n", itr->entity);
 }
