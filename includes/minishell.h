@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/22 23:19:08 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 03:15:17 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # define DQUOTE		2
 # define DOLLAR		3
 # define NEUTRAL	0
+
+# define PIPE		4
+# define QUERY		5
+// # define DOLLAR		6
+# define LEFT		7
+# define RIGHT		8
 
 int exit_status;
 
@@ -61,7 +67,7 @@ void	ms_token(t_book *record);
 int		ms_inputloop(t_book *record);
 void	record_init(t_book *record, char **envp);
 // ms_lexer.c
-int		ms_lexer(t_book *record, t_token *token);
+int		ms_lexer(t_book *record);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 02:28:14 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 03:04:25 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ void	ms_quotesplit(t_book *record)
  */
 void	ms_token(t_book *record)
 {
-	t_list	*itr;
+	// t_list	*itr;
 
 	ms_quotesplit(record);
 	// printf("sdad");
-	itr = (t_list *)(record->token);
-	while (itr)
-	{
-		printf("str: %s \n", ((t_token *)itr->content)->entity);
-		itr = itr->next;
-	}
+	// itr = (t_list *)(record->token);
+	// while (itr)
+	// {
+	// 	printf("str: %s \n", ((t_token *)itr->content)->entity);
+	// 	itr = itr->next;
+	// }
 }
