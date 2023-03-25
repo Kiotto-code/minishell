@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 03:15:17 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 04:18:43 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 // # define DOLLAR		6
 # define LEFT		7
 # define RIGHT		8
+# define LITERAL	9
 
 int exit_status;
 
