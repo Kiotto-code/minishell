@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 23:03:16 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/22 23:19:55 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 02:37:15 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ms_inputloop(t_book *record)
 		if (record->input == NULL)
 			exit(exit_status) ;
 		ms_token(record);
+		ms_lexer(record);
 		// printf("strqwe :%s\n", ((t_token *)(record->token->content))->entity);
 		free(record->input);
 	}

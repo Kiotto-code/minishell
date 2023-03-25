@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/25 04:47:33 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 02:28:14 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,11 @@ t_token	*ms_newtoken(char *av, int start, int end)
 	// 	return (NULL);
 	if (!new)
 		return (0);
-	new->entity = ft_substr(av, start, end);
+	new->entity = ft_substr(av, start, end - start);
+	printf("newtoken: %s\n", new->entity);
 	new->type = 0;
-	printf("wtf\n");
 	return (new);
 }
-
-// void	ms_tokenrec(char *av, int start, int end, t_book *record)
-// {
-// 	int		i;
-
-// 	i = start;
-// 	while (i <= end)
-// 	{
-// 		while (ft_strchr("|?$<>", av[i +1]))
-// 			i++;
-// 		if (ft_strchr("|?$<>", av[i +1]))
-// 		{
-// 			printf("checking\n\n\n\n");
-// 			ft_lstadd_back(&record->token,
-// 				ft_lstnew(ms_newtoken(av, start, i)));
-// 			start = i;
-// 			i++;
-// 			ft_lstadd_back(&record->token,
-// 				ft_lstnew(ms_newtoken(av, start, i)));
-// 		}
-// 		else
-// 		{
-// 			ft_lstadd_back(&record->token,
-// 				ft_lstnew(ms_newtoken(av, start, end)));
-// 			return ;
-// 		}
-// 		i++;
-// 	}
-// }
 
 void	ms_tokenrec(char *av, int start, int end, t_book *record)
 {
@@ -73,25 +44,20 @@ void	ms_tokenrec(char *av, int start, int end, t_book *record)
 	{
 		while (!ft_strchr("|?$<>", av[i]) && i < end)
 			i++;
-		if (ft_strchr("|?$<>", av[i]) && i < end)
-		{
+		if (i <= end && i != start)
 			ft_lstadd_back(&record->token,
 				ft_lstnew(ms_newtoken(av, start, i)));
-			ft_lstadd_back(&record->token,
-				ft_lstnew(ms_newtoken(av, i, (i +1))));
-			start = i +1;
-			// i++;
-		}
-		else
+		while (ft_strchr("|?$<>", av[i]))
 		{
 			ft_lstadd_back(&record->token,
-				ft_lstnew(ms_newtoken(av, start, end)));
-			return ;
+				ft_lstnew(ms_newtoken(av, i, (i +1))));
+			i++;
 		}
-		printf("2nd loop here\n");
-		return ;
+		start = i;
+		// if (ft_strchr("|?$<>", av[i]))
+		// 	i++;
 	}
-	// printf("outloop\n");
+	return ;
 }
 
 
@@ -120,11 +86,11 @@ void	ms_quotesplit(t_book *record)
 
 	start = 0;
 	av = ft_strjoin(record->input, " ");
-	// while (av[start] == ' ')
-	// 			start++;
 	end = start;
 	while (av[end])
 	{
+		// while (ft_strchr(" '\"", av[end]) == NULL && av[end])
+		// 	end++;
 		if ((av[end] == ' ' && av[end -1] != ' ' && \
 			record->anchor == NEUTRAL) || av[end +1] == 0)
 		{
@@ -132,7 +98,6 @@ void	ms_quotesplit(t_book *record)
 				start++;
 			ms_tokenrec(av, start, end, record);
 			start = end;
-			// printf("hello\n");
 		}
 		check_anchor(av[end], record);
 		end++;

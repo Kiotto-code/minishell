@@ -2,7 +2,9 @@
 
 int main()
 {
-	char str[] = "hello world";
-	char *test = ft_substr(str,0,1);
-	printf("%s\n", test);
+	char str[] = "dsfas dargdfdgshtd";
+	int i = 4;
+	// i++;
+	char *test = ft_substr(str,i, 5);
+	printf("%s", test);
 }
