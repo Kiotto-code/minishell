@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 19:28:43 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/07 20:18:44 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,6 @@ typedef struct s_token
 	int		type;
 }	t_token;
 
-typedef struct s_book
-{
-	char	**env_arr;
-	char	*input;
-	int		anchor;
-	t_list	*env;
-	t_list	*token;
-}	t_book;
-
 typedef struct s_cmdl
 {
 	char			**command;
@@ -81,6 +72,24 @@ typedef struct s_cmdl
 	struct s_rdr	*redir;
 	struct s_cmdl	*next;
 }				t_cmdl;
+
+typedef struct s_argl
+{
+	char			*arg_origin;
+	int				redirect;
+	struct s_argl	*next;
+}				t_argl;
+
+typedef struct s_book
+{
+	char	**env_arr;
+	char	*input;
+	int		anchor;
+	t_list	*env;
+	t_list	*token;
+	t_cmdl	*cmds;
+	// t_argl	*args;
+}	t_book;
 
 //----utils
 //ms_libft.c
