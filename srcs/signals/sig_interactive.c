@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_inputloop.c                                     :+:      :+:    :+:   */
+/*   sig_interrupt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 23:03:16 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 16:20:58 by yichan           ###   ########.fr       */
+/*   Created: 2023/04/05 23:30:47 by yichan            #+#    #+#             */
+/*   Updated: 2023/04/07 16:18:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ms_inputloop(t_book *record)
+void	sig_interrupt(int sig)
 {
-	while (1)
-	{
-		sigs_interactive_shell();
-		record->input = readline("./minishell> ");
-		if (record->input == NULL)
-			exit(exit_status);
-		if (*record->input)
-			add_history(record->input);
-		ms_token(record);
-		ms_lexer(record);
-		sigs_non_interactive_shell();
-		// printf("strqwe :%s\n", ((t_token *)(record->token->content))->entity);
-		free(record->input);
-		record->input = 0;
-	}
-	return (0);
+	(void)sig;
+	write (STDERR_FILENO, "\n", 1);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+	exit_status = 1;
+}
+
+/**
+ * @brief SIG_IGN == signal ignored
+ * 
+ */
+void	sigs_interactive_shell(void)
+{
+	signal(SIGTERM, SIG_IGN);
+	signal(SIGINT, &sig_interrupt);
+	signal(SIGQUIT, SIG_IGN);
 }

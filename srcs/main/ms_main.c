@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:16:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 02:52:08 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/05 23:37:17 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av, char **env)
 {
 	t_book	record;
 
-	(void) ac;
+	// (void) ac;
 	(void) av;
 	exit_status = 0;
 	// t_token	token;

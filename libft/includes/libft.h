@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:42:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/14 00:43:59 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/05 23:32:35 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdint.h>
-# include <stdio.h>
 
 typedef struct s_stk
 {

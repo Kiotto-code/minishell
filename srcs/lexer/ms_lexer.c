@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 01:57:02 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 05:20:33 by yichan           ###   ########.fr       */
+/*   Updated: 2023/03/26 22:06:23 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ms_lexer(t_book *record)
 			if ((ft_strcmp(arr[i].entity, check)) == 0)
 				token_ptr->type = arr[i].type;
 		}
-		printf("token_ptr: %s type: %d \n", token_ptr->entity, token_ptr->type);
+		printf("token_ptr: %s \ntype: %d \n", token_ptr->entity, token_ptr->type);
 		token_itr = token_itr->next;
 	}
 	return (0);

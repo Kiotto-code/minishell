@@ -1,3 +1,4 @@
+# incldue <readline>
 int	main(void)
 {
 	char	*str;
