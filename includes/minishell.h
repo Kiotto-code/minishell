@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 20:18:44 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/07 21:52:39 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_book
 	t_list	*env;
 	t_list	*token;
 	t_cmdl	*cmds;
-	// t_argl	*args;
+	t_argl	*args;
 }	t_book;
 
 //----utils
