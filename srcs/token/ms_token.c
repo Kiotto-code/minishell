@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 04:53:19 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/08 21:43:17 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	ms_tokenrec(char *av, int start, int end, t_book *record)
 		while (!ft_strchr("|?$<>", av[i]) && i < end)
 			i++;
 		if (i <= end && i != start)
-			ft_lstadd_back(&record->token,
-				ft_lstnew(ms_newtoken(av, start, i)));
+			ms_tokenladd_back(&record->token,
+				(ms_newtoken(av, start, i)));
 		while (ft_strchr("|?$<>", av[i]))
 		{
-			ft_lstadd_back(&record->token,
-				ft_lstnew(ms_newtoken(av, i, (i +1))));
+			ms_tokenladd_back(&record->token,
+				(ms_newtoken(av, i, (i +1))));
 			i++;
 		}
 		start = i;

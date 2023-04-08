@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 21:09:26 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 00:56:05 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_token
 {
 	char	*entity;
 	int		type;
+	struct s_token	*prev;
+	struct s_token	*next;
 }	t_token;
 
 //cmdl
@@ -91,7 +93,7 @@ typedef struct s_book
 	char	*input;
 	int		anchor;
 	t_env	*env;
-	t_list	*token;
+	t_token	*token;
 	t_cmdl	*cmds;
 	t_argl	*args;
 }	t_book;
@@ -99,24 +101,60 @@ typedef struct s_book
 //----utils
 //ms_libft.c
 
-//----allocate
-//ms_initiate.c
-void	ms_token(t_book *record);
-int		ms_inputloop(t_book *record);
-void	record_init(t_book *record, char **envp);
+//----token
+//ms_token.c
+// void	ms_token(t_book *record);
+// int		ms_inputloop(t_book *record);
+// void	record_init(t_book *record, char **envp);
+
 // ms_lexer.c
 int		ms_lexer(t_book *record);
+
 //-----signals
 // sig_interactive.c
 void	sigs_interactive_shell(void);
 // sig_non_interactive.c
 void	sigs_non_interactive_shell(void);
+
 //-----token
 // ms_envp2.c
 void	ms_envladd_back(t_env **lst, t_env *new);
 t_env	*newenvl(char *content);
 t_env	*ft_envllast(t_env *lst);
+// ms_token2.c
+void	ms_tokenladd_back(t_token **lst, t_token *new);
+t_token	*ft_tokenllast(t_token *lst);
+//ms_token.c
+void	ms_token(t_book *record);
+int		ms_inputloop(t_book *record);
+void	record_init(t_book *record, char **envp);
 
+//----execution
+//execute_cmds.c
+void	execute_cmds(t_book *mini, t_cmdl *cmds);
+//path_processing.c
+char	*path_processing(t_book *mini, char *line);
+// builtin.c
+int	builtin_checker(char *command);
+
+//----utils
+//env_utils.c
+int	env_copy_lstsize(t_env *env_copy);
+// memory_processing.c
+void	array_liberator(char **array);
+
+
+
+/*
+ * //only for printing; No particular usage
+ */
+void	print_env_copy(t_env *env_copy);
+void	print_args(t_argl *args);
+void	print_cmds(t_cmdl *cmds);
+void	print_redir(t_cmdl *cmds);
+int		print_msg(int ret_val, char *message, int ext_stat);
+void	no_such_message(char *message);
+void	error_msg(char *message);
 
 
 #endif

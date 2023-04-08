@@ -1,0 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory_processing.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/08 22:30:19 by yichan            #+#    #+#             */
+/*   Updated: 2023/04/08 22:31:10 by yichan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+void	*allocator(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		perror("Could not malloc");
+		exit(EXIT_FAILURE);
+	}
+	return (ptr);
+}
+
+void	initializator(t_shell *mini)
+{
+	mini->input = NULL;
+	mini->env_copy = NULL;
+	mini->cmds = NULL;
+	mini->args = NULL;
+}
+
+void	liberator(t_shell *mini)
+{
+	args_destroy(&mini->args);
+	cmds_destroy(&mini->cmds);
+}
+
+void	array_liberator(char **array)
+{
+	int	it;
+
+	it = 0;
+	while (array[it])
+	{
+		free(array[it]);
+		array[it] = NULL;
+		it++;
+	}
+	free(array);
+	array = NULL;
+}
