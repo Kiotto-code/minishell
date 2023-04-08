@@ -17,6 +17,20 @@
 		"string_view": "c",
 		"unordered_map": "c",
 		"vector": "c",
-		"errno.h": "c"
+		"errno.h": "c",
+		"__functional_base": "c",
+		"__node_handle": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"__memory": "c",
+		"functional": "c",
+		"limits": "c",
+		"memory": "c",
+		"optional": "c",
+		"ratio": "c",
+		"system_error": "c",
+		"tuple": "c",
+		"type_traits": "c"
 	}
 }

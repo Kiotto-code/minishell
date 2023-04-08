@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 16:17:35 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/08 21:09:26 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef struct s_env
 	char			*var;
 	char			*key;
 	char			*value;
-
+	struct s_env	*prev;
+	struct s_env	*next;
 }	t_env;
 
 //redir
@@ -89,7 +90,7 @@ typedef struct s_book
 	char	**env_arr;
 	char	*input;
 	int		anchor;
-	t_list	*env;
+	t_env	*env;
 	t_list	*token;
 	t_cmdl	*cmds;
 	t_argl	*args;
@@ -110,6 +111,12 @@ int		ms_lexer(t_book *record);
 void	sigs_interactive_shell(void);
 // sig_non_interactive.c
 void	sigs_non_interactive_shell(void);
+//-----token
+// ms_envp2.c
+void	ms_envladd_back(t_env **lst, t_env *new);
+t_env	*newenvl(char *content);
+t_env	*ft_envllast(t_env *lst);
+
 
 
 #endif

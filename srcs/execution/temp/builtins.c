@@ -6,28 +6,28 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:12:45 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 16:13:44 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/08 18:59:10 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	builtin_executing(t_shell *mini, t_cmdl *cmds)
+void	builtin_executing(t_book *mini, t_cmdl *cmds)
 {
 	if (!ft_strcmp(cmds->command[0], "cd"))
-		g_ext_stat = cd_executing(mini, cmds->command);
+		exit_status = cd_executing(mini, cmds->command);
 	else if (!ft_strcmp(cmds->command[0], "echo"))
-		g_ext_stat = echo_executing(cmds->command);
+		exit_status = echo_executing(cmds->command);
 	else if (!ft_strcmp(cmds->command[0], "env"))
-		g_ext_stat = env_executing(mini->env_copy);
+		exit_status = env_executing(mini->env);
 	else if (!ft_strcmp(cmds->command[0], "exit"))
-		g_ext_stat = exit_executing(mini, cmds->command);
+		exit_status = exit_executing(mini, cmds->command);
 	else if (!ft_strcmp(cmds->command[0], "export"))
-		g_ext_stat = export_executing(mini, cmds->command);
+		exit_status = export_executing(mini, cmds->command);
 	else if (!ft_strcmp(cmds->command[0], "pwd"))
-		g_ext_stat = pwd_executing();
+		exit_status = pwd_executing();
 	else if (!ft_strcmp(cmds->command[0], "unset"))
-		g_ext_stat = unset_executing(mini, cmds->command);
+		exit_status = unset_executing(mini, cmds->command);
 }
 
 int	builtin_checker(char *command)
