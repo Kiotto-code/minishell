@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 21:52:39 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:17:35 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 
 int	exit_status;
 
+//envl
 typedef struct s_env
 {
 	char			*var;
@@ -54,13 +55,14 @@ typedef struct s_env
 
 }	t_env;
 
-//lexer
+//redir
 typedef struct s_token
 {
 	char	*entity;
 	int		type;
 }	t_token;
 
+//cmdl
 typedef struct s_cmdl
 {
 	char			**command;
@@ -73,6 +75,7 @@ typedef struct s_cmdl
 	struct s_cmdl	*next;
 }				t_cmdl;
 
+//argl
 typedef struct s_argl
 {
 	char			*arg_origin;
@@ -80,6 +83,7 @@ typedef struct s_argl
 	struct s_argl	*next;
 }				t_argl;
 
+//shell
 typedef struct s_book
 {
 	char	**env_arr;
