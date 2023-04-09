@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:29:45 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 23:34:50 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 21:37:24 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	env_copy_lstsize(t_env *env_copy)
 	return (count);
 }
 
-char	*find_in_env(t_envl *env_copy, char *key)
+char	*find_in_env(t_env *env_copy, char *key)
 {
 	if (!env_copy || !key)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:13:11 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 16:20:22 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 21:39:38 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**get_paths(t_book *mini)
 	char	*path_value;
 	char	**paths;
 
-	path_value = find_in_env(mini->env_copy, "PATH");
+	path_value = find_in_env(mini->env, "PATH");
 	if (!path_value)
 		return (NULL);
 	paths = ft_split(path_value, ':');

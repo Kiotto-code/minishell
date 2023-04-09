@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 00:56:05 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 21:37:18 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define LEFT		7
 # define RIGHT		8
 # define LITERAL	9
+# define DLEFT		10
+# define DRIGHT		11
 
 int	exit_status;
 
@@ -101,14 +103,26 @@ typedef struct s_book
 //----utils
 //ms_libft.c
 
-//----token
-//ms_token.c
-// void	ms_token(t_book *record);
-// int		ms_inputloop(t_book *record);
-// void	record_init(t_book *record, char **envp);
+//----execution
+//execute_cmds.c
+void	execute_cmds(t_book *mini, t_cmdl *cmds);
+//here_doc.c
+void	heredoc_processing(t_cmdl *cmd);
+int		heredoc_checking(t_cmdl *cmd);
+//path_processing.c
+char	*path_processing(t_book *mini, char *line);
+//pipex.c
+int	pipe_creator(t_cmdl *cmds);
+// builtin.c
+int	builtin_checker(char *command);
 
+//----lexer
 // ms_lexer.c
 int		ms_lexer(t_book *record);
+
+//----parse
+//parser_utils.c
+void	fd_opening(t_cmdl *cmds);
 
 //-----signals
 // sig_interactive.c
@@ -129,17 +143,13 @@ void	ms_token(t_book *record);
 int		ms_inputloop(t_book *record);
 void	record_init(t_book *record, char **envp);
 
-//----execution
-//execute_cmds.c
-void	execute_cmds(t_book *mini, t_cmdl *cmds);
-//path_processing.c
-char	*path_processing(t_book *mini, char *line);
-// builtin.c
-int	builtin_checker(char *command);
 
 //----utils
 //env_utils.c
 int	env_copy_lstsize(t_env *env_copy);
+char	*find_in_env(t_env *env_copy, char *key);
+//execute_utils.c
+int	execute_dup2(t_cmdl *cmds);
 // memory_processing.c
 void	array_liberator(char **array);
 

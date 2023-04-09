@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 21:43:17 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 21:36:35 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,35 @@ t_token	*ms_newtoken(char *av, int start, int end)
 	return (new);
 }
 
+int check_dredirection(t_book *record, char *av, int *i)
+{
+	// if (ft_strchr(">", av[*i]) && ft_strchr(">", av[*i +1]))
+	// {
+	// 	ms_tokenladd_back(&record->token,
+	// 		(ms_newtoken(av, *i, (*i +2))));
+	// 	*i += 2;
+	// 	return (1);
+	// }
+	// if (ft_strchr("<", av[*i]) && ft_strchr("<", av[*i +1]))
+	// {
+	// 	ms_tokenladd_back(&record->token,
+	// 		(ms_newtoken(av, *i, (*i +2))));
+	// 	*i += 2;
+	// 	return (1);
+	// }
+	// return (0);
+	if (!ft_strchr("<>", av[*i]) || (av[*i] != av[*i +1]))
+		return (0);
+	else
+	{
+		ft_lstadd_back(&record->token,
+			ft_lstnew(ms_newtoken(av, *i, (*i +2))));
+		*i += 2;
+		return (1);
+	}
+}
+
+
 void	ms_tokenrec(char *av, int start, int end, t_book *record)
 {
 	int		i;
@@ -49,6 +78,8 @@ void	ms_tokenrec(char *av, int start, int end, t_book *record)
 				(ms_newtoken(av, start, i)));
 		while (ft_strchr("|?$<>", av[i]))
 		{
+			if (check_dredirection(record, av, &i))
+				continue ;
 			ms_tokenladd_back(&record->token,
 				(ms_newtoken(av, i, (i +1))));
 			i++;

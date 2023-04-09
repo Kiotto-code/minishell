@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:29:29 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 22:30:58 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 16:41:18 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_argl	*args_lstnew(char *arg_str, t_shell *mini)
+t_argl	*args_lstnew(char *arg_str, t_book *mini)
 {
 	t_argl	*element;
 

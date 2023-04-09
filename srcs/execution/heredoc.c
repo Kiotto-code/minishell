@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:12:59 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 16:23:12 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/09 21:27:16 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	heredoc_checking(t_cmdl *cmd)
 	if (!cmd->redir)
 		return (0);
 	tmp = (t_token *) cmd->redir;
-	if (ft_strcmp("<<", tmp->type) == 0)
+	// if (ft_strcmp("<<", tmp->type) == 0)
+	if (tmp->type == DLEFT)
 		return (1);
 	return (0);
 }
