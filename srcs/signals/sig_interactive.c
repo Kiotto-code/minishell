@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sig_interrupt.c                                    :+:      :+:    :+:   */
+/*   sig_interactive.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 23:30:47 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 16:18:20 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/10 22:41:43 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	sig_interrupt(int sig)
 }
 
 /**
- * @brief SIG_IGN == signal ignored
+ * @brief 	SIG_IGN == signal ignored
+ * 			SIGTERM == signal termination
+ * 			SIGQUIT == 
  * 
  */
 void	sigs_interactive_shell(void)

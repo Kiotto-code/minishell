@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:22:28 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:22:30 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/10 23:37:00 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	opener(char *path, char flag)
 	if (fd == -1)
 	{
 		print_msg(1, strerror(errno), 1);
-		g_ext_stat = 1;
-		exit(g_ext_stat);
+		exit_status = 1;
+		exit(exit_status);
 	}
 	return (fd);
 }

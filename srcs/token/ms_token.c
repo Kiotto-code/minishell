@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 21:36:35 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/10 01:56:49 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	ms_quotesplit(t_book *record)
 	char			*av;
 
 	start = 0;
-	av = ft_strjoin(record->input, " ");
+	av = ft_strjoin(record->input, " ");//
 	end = start;
 	while (av[end])
 	{
