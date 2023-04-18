@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/10 23:45:23 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/13 23:44:28 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_token
 {
 	char	*entity;
 	int		type;
+	int		redirect;
 	struct s_token	*prev;
 	struct s_token	*next;
 }	t_token;

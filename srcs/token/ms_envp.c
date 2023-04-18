@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 00:40:48 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 21:31:33 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/13 21:08:40 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void	record_init(t_book *record, char **envp)
 {
 	record->env = 0;
 	record->token = 0;
+	record->cmds = 0;
+	record->args = 0;
+	record->env_arr = 0;
+	record->input = 0;
 	record->anchor = NEUTRAL;
 	ft_arr2envl(&(record->env), envp);
 	name_expand(&(record->env), envp);

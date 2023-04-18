@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 18:29:34 by yichan            #+#    #+#              #
-#    Updated: 2023/04/09 01:13:01 by yichan           ###   ########.fr        #
+#    Updated: 2023/04/16 01:20:35 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,15 @@ SRC_PATH    = ./srcs/**
 OBJ_PATH    = ./obj
 LIBFT_PATH	= ./libft
 
-SRCS	= $(wildcard srcs/*/*.c)
+# SRCS	= $(wildcard srcs/*/*.c)
+SRCS	= $(wildcard $(SRC_PATH)/*.c)
+# SRCS	= $(shell find srcs/ -name "*.c")
 # SRCS    = $(wildcard ./srcs/*/*.c)
 # OBJS    = ${SRCS:./srcs/%.c=${OBJ_PATH}/%.o}
 # SRCS	= ${shell find ./src/libft/ -name "*.c"}
-OBJS	= $(addprefix $(OBJ_PATH)/,$(patsubst %.c,%.o,$(notdir $(SRCS))))
+# OBJS	= $(addprefix $(OBJ_PATH)/,$(patsubst %.c,%.o,$(notdir $(SRCS))))
+OBJS	= $(patsubst %.c,$(OBJ_PATH)/%.o,$(notdir $(SRCS)))
+# OBJS	= $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRCS))
 # SRCS	= $(foreach x, $(SRC_PATH), $(wildcard $(addprefix $(x)/*/*,.c*)))
 # OBJS	= $(addprefix $(OBJ_PATH)/, $(addsuffix .o, $(notdir $(basename $(SRCS)))))
 
