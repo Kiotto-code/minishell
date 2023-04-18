@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/13 23:44:28 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:16:25 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_book
 	t_env	*env;
 	t_token	*token;
 	t_cmdl	*cmds;
-	t_argl	*args;
+	t_token	*args;
 }	t_book;
 
 //----utils
@@ -124,6 +124,8 @@ int		ms_lexer(t_book *record);
 //----parse
 //parser_utils.c
 void	fd_opening(t_cmdl *cmds);
+//redirect_processing.c
+t_redir	*redirect_processing(t_token **args);
 
 //-----signals
 // sig_interactive.c

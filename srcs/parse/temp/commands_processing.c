@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:22:46 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:22:48 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:12:40 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	clean_cmd_and_filename(t_shell *mini)
 
 t_cmdl	*commands_processing(t_shell *mini)
 {
-	t_argl	*tmp;
-	t_argl	*cmd_begin;
+	t_token	*tmp;
+	t_token	*cmd_begin;
 
 	if (mini->args == NULL)
 		return (NULL);
 	tmp = mini->args;
 	cmd_begin = tmp;
-	if ((ft_strcmp(tmp->arg_origin, "|")) == 0)
+	if ((ft_strcmp(tmp->entity, "|")) == 0)
 		tmp = tmp->next;
 	while (tmp)
 	{
-		if ((ft_strcmp(tmp->arg_origin, "|")) == 0)
+		if ((ft_strcmp(tmp->entity, "|")) == 0)
 		{
 			cmds_lstadd_back(&mini->cmds, cmds_lstnew(cmd_begin));
 			cmd_begin = tmp->next;

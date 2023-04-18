@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:16 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:23:17 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:12:47 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ t_redir	*redir_lstnew(char *type, char *name)
 	return (element);
 }
 
-int	first_redirect(t_argl **args, t_redir **rdr)
+int	first_redirect(t_token **args, t_redir **rdr)
 {
 	while (*args)
 	{
 		if ((*args)->redirect == 1)
 		{
-			redir_lstadd_back(rdr, redir_lstnew((*args)->arg_origin, \
-			(*args)->next->arg_origin));
+			redir_lstadd_back(rdr, redir_lstnew((*args)->entity, \
+			(*args)->next->entity));
 			if (!(*args)->next->next)
 			{
 				(*args) = (*args)->next->next;
@@ -63,10 +63,10 @@ int	first_redirect(t_argl **args, t_redir **rdr)
 	return (0);
 }
 
-t_redir	*redirect_processing(t_argl **args)
+t_redir	*redirect_processing(t_token **args)
 {
 	t_redir	*rdr;
-	t_argl	*tmp;
+	t_token	*tmp;
 
 	if (!args || !(*args))
 		return (NULL);
@@ -76,12 +76,12 @@ t_redir	*redirect_processing(t_argl **args)
 	tmp = *args;
 	while (tmp->next)
 	{
-		if (ft_strcmp(tmp->arg_origin, "|") == 0)
+		if (ft_strcmp(tmp->entity, "|") == 0)
 			break ;
 		if (tmp->next->redirect == 1)
 		{
-			redir_lstadd_back(&rdr, redir_lstnew(tmp->next->arg_origin, \
-			tmp->next->next->arg_origin));
+			redir_lstadd_back(&rdr, redir_lstnew(tmp->next->entity, \
+			tmp->next->next->entity));
 			args_lstdelnode(&tmp->next);
 			args_lstdelnode(&tmp->next);
 		}

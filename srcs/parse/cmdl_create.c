@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_struct.c                                       :+:      :+:    :+:   */
+/*   cmdl_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:01:54 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/07 20:14:04 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:12:33 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	find_full_command(t_argl *args)
+int	find_full_command(t_token *args)
 {
 	int		quantity;
-	t_argl	*tmp;
+	t_token	*tmp;
 
 	if (!args)
 		return (0);
 	tmp = args;
 	quantity = 1;
-	if (ft_strcmp("|", tmp->arg_origin) == 0)
+	if (ft_strcmp("|", tmp->entity) == 0)
 		return (0);
 	while (tmp->next)
 	{
 		tmp = tmp->next;
-		if (ft_strcmp(tmp->arg_origin, "|") == 0)
+		if (ft_strcmp(tmp->entity, "|") == 0)
 			return (quantity);
 		quantity++;
 	}
 	return (quantity);
 }
 
-char	**write_cmd_to_array(t_argl *args, int quantity_lists)
+char	**write_cmd_to_array(t_token *args, int quantity_lists)
 {
 	int		it;
 	char	**arg_arr;
@@ -44,7 +44,7 @@ char	**write_cmd_to_array(t_argl *args, int quantity_lists)
 		return (NULL);
 	while (args && (quantity_lists != 0))
 	{
-		arg_arr[it] = ft_strdup(args->arg_origin);
+		arg_arr[it] = ft_strdup(args->entity);
 		it++;
 		quantity_lists--;
 		args = args->next;
@@ -53,7 +53,7 @@ char	**write_cmd_to_array(t_argl *args, int quantity_lists)
 	return (arg_arr);
 }
 
-t_cmdl	*cmds_lstnew(t_argl *args)
+t_cmdl	*cmds_lstnew(t_token *args)
 {
 	t_cmdl	*element;
 	int		quantity_lists;

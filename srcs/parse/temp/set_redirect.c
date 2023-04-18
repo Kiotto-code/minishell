@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:21 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:23:23 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:12:59 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	is_redirect(char *argument)
 	return (0);
 }
 
-void	set_redirect(t_argl *args)
+void	set_redirect(t_token *args)
 {
 	while (args)
 	{
-		if (is_redirect(args->arg_origin) == 1)
+		if (is_redirect(args->entity) == 1)
 		{
 			args->redirect = 1;
 			args->next->redirect = 2;

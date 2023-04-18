@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:30:25 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 23:34:56 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 21:13:13 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	print_env_copy(t_envl *env_copy)
 	}
 }
 
-void	print_args(t_argl *args)
+void	print_args(t_token *args)
 {
 	if (args == NULL)
 		return ;
 	while (args)
 	{
-		printf("args origin - |%s| \t %d\n", args->arg_origin, args->redirect);
+		printf("args origin - |%s| \t %d\n", args->entity, args->redirect);
 		args = args->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:22:37 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:22:40 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 19:56:27 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	find_end(char *input, int it, int *flag)
 	return (it);
 }
 
-void	split_input(char *input, t_argl **args, t_shell *mini)
+void	split_input(char *input, t_token **args, t_shell *mini)
 {
 	int		it;
 	int		begin;
@@ -76,7 +76,7 @@ void	split_input(char *input, t_argl **args, t_shell *mini)
 	}
 }
 
-t_argl	*arguments_processing(t_shell *mini)
+t_token	*arguments_processing(t_shell *mini)
 {
 	split_input(mini->input, &(mini->args), mini);
 	set_redirect(mini->args);
