@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:30:25 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/18 21:13:13 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:32:19 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env_copy(t_envl *env_copy)
+void	print_env_copy(t_env *env_copy)
 {
 	if (env_copy == NULL)
 		return ;
@@ -86,7 +86,7 @@ int	print_msg(int ret_val, char *message, int ext_stat)
 	ft_putstr_fd(BEGIN(49, 32)"[minishell ]$ "CLOSE, STDERR_FILENO);
 	ft_putendl_fd(message, STDERR_FILENO);
 //	(void)ext_stat;
-	g_ext_stat = ext_stat;
+	exit_status = ext_stat;
 	return (ret_val);
 }
 
@@ -96,7 +96,7 @@ void	error_msg(char *message)
 		ft_putendl_fd(message, STDERR_FILENO);
 	else
 		perror("Error");
-	g_ext_stat = 128;
+	exit_status = 128;
 }
 
 void	no_such_message(char *message)

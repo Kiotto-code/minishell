@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:00 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:23:02 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:32:22 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	key_checker(char c)
 	return (0);
 }
 
-char	*key_handler(char *input, int begin, int end, t_envl *env_copy)
+char	*key_handler(char *input, int begin, int end, t_env *env_copy)
 {
 	char	*key;
 	char	*tmp_1;
@@ -51,7 +51,7 @@ char	*question_handle(char *input, int begin, int *it)
 	char	*nbr_val;
 	char	*tail;
 
-	nbr_val = ft_itoa(g_ext_stat);
+	nbr_val = ft_itoa(exit_status);
 	tmp_1 = ft_substr(input, 0, begin);
 	tmp_2 = ft_strjoin(tmp_1, nbr_val);
 	tail = ft_strdup(&input[*it]);
@@ -61,11 +61,11 @@ char	*question_handle(char *input, int begin, int *it)
 	free(tmp_2);
 	free(tail);
 	free(input);
-	g_ext_stat = 0;
+	exit_status = 0;
 	return (line_new);
 }
 
-char	*is_dollar(char *input, int *it, t_envl *env_copy)
+char	*is_dollar(char *input, int *it, t_env *env_copy)
 {
 	int		begin;
 

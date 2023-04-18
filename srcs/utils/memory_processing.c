@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:30:19 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/08 22:31:10 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:35:50 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	*allocator(size_t size)
 	return (ptr);
 }
 
-void	initializator(t_shell *mini)
-{
-	mini->input = NULL;
-	mini->env_copy = NULL;
-	mini->cmds = NULL;
-	mini->args = NULL;
-}
+// void	initializator(t_book *mini)
+// {
+// 	mini->input = NULL;
+// 	mini->env = NULL;
+// 	mini->cmds = NULL;
+// 	mini->args = NULL;
+// }
 
-void	liberator(t_shell *mini)
+void	liberator(t_book *mini)
 {
 	args_destroy(&mini->args);
 	cmds_destroy(&mini->cmds);

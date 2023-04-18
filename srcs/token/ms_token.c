@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:19:09 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/10 01:56:49 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:16:55 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int check_dredirection(t_book *record, char *av, int *i)
 		return (0);
 	else
 	{
-		ft_lstadd_back(&record->token,
-			ft_lstnew(ms_newtoken(av, *i, (*i +2))));
+		ms_tokenladd_back(&record->args,
+			(ms_newtoken(av, *i, (*i +2))));
 		*i += 2;
 		return (1);
 	}
@@ -74,13 +74,13 @@ void	ms_tokenrec(char *av, int start, int end, t_book *record)
 		while (!ft_strchr("|?$<>", av[i]) && i < end)
 			i++;
 		if (i <= end && i != start)
-			ms_tokenladd_back(&record->token,
+			ms_tokenladd_back(&record->args,
 				(ms_newtoken(av, start, i)));
 		while (ft_strchr("|?$<>", av[i]))
 		{
 			if (check_dredirection(record, av, &i))
 				continue ;
-			ms_tokenladd_back(&record->token,
+			ms_tokenladd_back(&record->args,
 				(ms_newtoken(av, i, (i +1))));
 			i++;
 		}

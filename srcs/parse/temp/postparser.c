@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:23:07 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:20:06 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*is_slash(char *input, int *it)
 	return (input);
 }
 
-char	*postparser(char *input, t_envl *env_copy) // "", '', \, $, ;, |, >, >>, <, 'пробел'
+char	*postparser(char *input, t_env *env_copy) // "", '', \, $, ;, |, >, >>, <, 'пробел'
 {
 	int	it;
 

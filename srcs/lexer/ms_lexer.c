@@ -6,12 +6,39 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 01:57:02 by yichan            #+#    #+#             */
-/*   Updated: 2023/03/26 22:06:23 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 23:09:08 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// int	ms_lexer(t_book *record)
+// {
+// 	t_list			*token_itr;
+// 	t_token			*token_ptr;
+// 	char			*check;
+// 	const t_token	arr[] = {{.entity = "|", .type = PIPE},
+// 	{.entity = "?", .type = QUERY}, {.entity = "$", .type = DOLLAR},
+// 	{.entity = "<", .type = LEFT}, {.entity = ">", .type = RIGHT}};
+// 	int				i;
+
+// 	token_itr = (t_list *)record->args;
+// 	while (token_itr)
+// 	{
+// 		i = -1;
+// 		token_ptr = ((t_token *)token_itr->content);
+// 		check = token_ptr->entity;
+// 		token_ptr->type = LITERAL;
+// 		while (++i < (int)(sizeof(arr) / sizeof(arr[0])))
+// 		{
+// 			if ((ft_strcmp(arr[i].entity, check)) == 0)
+// 				token_ptr->type = arr[i].type;
+// 		}
+// 		printf("token_ptr: %s \ntype: %d \n", token_ptr->entity, token_ptr->type);
+// 		token_itr = token_itr->next;
+// 	}
+// 	return (0);
+// }
 int	ms_lexer(t_book *record)
 {
 	t_list			*token_itr;
@@ -19,10 +46,10 @@ int	ms_lexer(t_book *record)
 	char			*check;
 	const t_token	arr[] = {{.entity = "|", .type = PIPE},
 	{.entity = "?", .type = QUERY}, {.entity = "$", .type = DOLLAR},
-	{.entity = "<", .type = LEFT}, {.entity = ">", .type = RIGHT}};
+	{.entity = "<", .type = LEFT}, {.entity = ">", .type = RIGHT},
+	{.entity = "<<", .type = DLEFT}, {.entity = ">>", .type = DRIGHT}};
 	int				i;
-
-	token_itr = (t_list *)record->token;
+	token_itr = (t_list *)record->args;
 	while (token_itr)
 	{
 		i = -1;
@@ -34,7 +61,7 @@ int	ms_lexer(t_book *record)
 			if ((ft_strcmp(arr[i].entity, check)) == 0)
 				token_ptr->type = arr[i].type;
 		}
-		printf("token_ptr: %s \ntype: %d \n", token_ptr->entity, token_ptr->type);
+		printf("token_ptr: %s type: %d \n", token_ptr->entity, token_ptr->type);
 		token_itr = token_itr->next;
 	}
 	return (0);

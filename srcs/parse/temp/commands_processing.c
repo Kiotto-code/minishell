@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:22:46 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/18 21:12:40 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:35:44 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	clean_cmd_and_filename(t_shell *mini)
+void	clean_cmd_and_filename(t_book *mini)
 {
 	t_cmdl	*cmd;
 	t_redir	*rdr;
@@ -27,20 +27,20 @@ void	clean_cmd_and_filename(t_shell *mini)
 			it = 0;
 			while (cmd->command[it])
 			{
-				cmd->command[it] = postparser(cmd->command[it], mini->env_copy);
+				cmd->command[it] = postparser(cmd->command[it], mini->env);
 				it++;
 			}
 		}
 		while (rdr)
 		{
-			rdr->name = postparser(rdr->name, mini->env_copy);
+			rdr->name = postparser(rdr->name, mini->env);
 			rdr = rdr->next;
 		}
 		cmd = cmd->next;
 	}
 }
 
-t_cmdl	*commands_processing(t_shell *mini)
+t_cmdl	*commands_processing(t_book *mini)
 {
 	t_token	*tmp;
 	t_token	*cmd_begin;

@@ -6,13 +6,13 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 22:29:45 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 21:37:24 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:20:28 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	envl_lstdelone(t_envl *lst)
+void	envl_lstdelone(t_env *lst)
 {
 	if (!lst)
 		return ;
@@ -26,9 +26,9 @@ void	envl_lstdelone(t_envl *lst)
 	lst = NULL;
 }
 
-void	envl_destroy(t_envl **lst)
+void	envl_destroy(t_env **lst)
 {
-	t_envl	*tmp;
+	t_env	*tmp;
 
 	if (!lst)
 		return ;
@@ -69,7 +69,7 @@ char	*find_in_env(t_env *env_copy, char *key)
 	return (NULL);
 }
 
-void	change_value_in_env_copy(t_envl *env_copy, char *key, char *value)
+void	change_value_in_env_copy(t_env *env_copy, char *key, char *value)
 {
 	if (!env_copy || !key || !value)
 		return ;

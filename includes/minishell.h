@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:17:57 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/18 21:16:25 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:37:06 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
-//redir
+//argl
 typedef struct s_token
 {
 	char	*entity;
@@ -82,12 +82,12 @@ typedef struct s_cmdl
 }				t_cmdl;
 
 //argl
-typedef struct s_argl
-{
-	char			*arg_origin;
-	int				redirect;
-	struct s_argl	*next;
-}				t_argl;
+// typedef struct s_argl
+// {
+// 	char			*arg_origin;
+// 	int				redirect;
+// 	struct s_argl	*next;
+// }				t_argl;
 
 //shell
 typedef struct s_book
@@ -96,13 +96,18 @@ typedef struct s_book
 	char	*input;
 	int		anchor;
 	t_env	*env;
-	t_token	*token;
+	// t_token	*token;
 	t_cmdl	*cmds;
 	t_token	*args;
 }	t_book;
 
-//----utils
-//ms_libft.c
+typedef struct s_redir
+{
+	char			*type;
+	char			*name;
+	struct s_redir	*next;
+}				t_redir;
+
 
 //----execution
 //execute_cmds.c
@@ -123,9 +128,13 @@ int		ms_lexer(t_book *record);
 
 //----parse
 //parser_utils.c
+int	pass_whitespaces(char *input, int it);
 void	fd_opening(t_cmdl *cmds);
 //redirect_processing.c
 t_redir	*redirect_processing(t_token **args);
+//validator.c
+int	validator(char *input);
+int	counting_redirect(char *input, int *it, char redirect);
 
 //-----signals
 // sig_interactive.c
@@ -148,13 +157,20 @@ void	record_init(t_book *record, char **envp);
 
 
 //----utils
+//argument_utils.c
+void	args_lstdelnode(t_token **args);
+void	args_destroy(t_token **lst);
 //env_utils.c
 int	env_copy_lstsize(t_env *env_copy);
 char	*find_in_env(t_env *env_copy, char *key);
+void	change_value_in_env_copy(t_env *env_copy, char *key, char *value);
 //execute_utils.c
 int	execute_dup2(t_cmdl *cmds);
 // memory_processing.c
 void	array_liberator(char **array);
+void	liberator(t_book *mini);;
+// command_utils.c
+void	cmds_destroy(t_cmdl **lst);
 
 
 
@@ -162,7 +178,7 @@ void	array_liberator(char **array);
  * //only for printing; No particular usage
  */
 void	print_env_copy(t_env *env_copy);
-void	print_args(t_argl *args);
+void	print_args(t_token *args);
 void	print_cmds(t_cmdl *cmds);
 void	print_redir(t_cmdl *cmds);
 int		print_msg(int ret_val, char *message, int ext_stat);

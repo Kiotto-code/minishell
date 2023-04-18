@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:23:10 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:23:12 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:20:10 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*is_quote(char *input, int *it)
 	return (input);
 }
 
-char	*is_db_quote(char *input, int *it, t_envl *env_copy)
+char	*is_db_quote(char *input, int *it, t_env *env_copy)
 {
 	int		begin;
 

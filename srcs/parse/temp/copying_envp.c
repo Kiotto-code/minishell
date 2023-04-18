@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:22:55 by yichan            #+#    #+#             */
-/*   Updated: 2023/04/09 17:22:57 by yichan           ###   ########.fr       */
+/*   Updated: 2023/04/18 22:18:02 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ char	*copy_key(char *env_part)
 	return (key);
 }
 
-t_envl	*envl_lstnew(char *env_str)
+t_env	*envl_lstnew(char *env_str)
 {
-	t_envl	*element;
+	t_env	*element;
 
-	element = (t_envl *)malloc(sizeof(t_envl));
+	element = (t_env *)malloc(sizeof(t_env));
 	if (!element)
 		return (NULL);
 	element->line = ft_strdup(env_str);
@@ -56,9 +56,9 @@ t_envl	*envl_lstnew(char *env_str)
 	return (element);
 }
 
-void	envl_lstadd_back(t_envl	**list, t_envl *new)
+void	envl_lstadd_back(t_env	**list, t_env *new)
 {
-	t_envl	*last;
+	t_env	*last;
 
 	if (!list || !new)
 		exit(EXIT_FAILURE);
@@ -73,9 +73,9 @@ void	envl_lstadd_back(t_envl	**list, t_envl *new)
 		*list = new;
 }
 
-t_envl	*copying_envp(char **envp)
+t_env	*copying_envp(char **envp)
 {
-	t_envl	*envp_copy;
+	t_env	*envp_copy;
 	int		it;
 
 	it = 0;
